@@ -1,4 +1,5 @@
 import numpy as np
+import math
 
 class SNN_class():
     def __init__(self, NT, numIn, numOut):
@@ -24,4 +25,6 @@ class SNN_class():
         print('# of output neurons: ', self.numOut)
 
     def initilizationWeights(self, weightIn, weightOut):
-        weight = abs(np.random.randn(self.numIn, self.numOut))
+        weight = abs(0.4+math.sqrt(2/weightIn) *
+                     np.random.randn(self.numIn, self.numOut))
+        weightInhit = 4*~np.eye(weightOut)
